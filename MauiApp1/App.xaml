@@ -1,0 +1,83 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1"
+             x:Class="MauiApp1.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="PrimaryColor">#512bdf</Color>
+            <Color x:Key="SecondaryColor">White</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="Padding" Value="14,10" />
+            </Style>
+
+            <ControlTemplate
+                x:Key="RadioButtonControlTemplate">
+                <Frame BorderColor="Transparent"
+                   BackgroundColor="Transparent"
+                   HasShadow="False"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   Padding="0">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CheckedStates">
+                                <VisualState x:Name="Checked">
+                                    <VisualState.Setters>
+                                        <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <VisualState.Setters>
+                                        <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                    <Grid WidthRequest="60">
+                        <RoundRectangle
+                            Stroke="Blue"
+                            Fill="White"
+                            StrokeThickness="5"
+                            CornerRadius="5"
+                            WidthRequest="60"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <RoundRectangle x:Name="check"
+                            Fill="Blue"
+                            CornerRadius="5"
+                            WidthRequest="60"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </Frame>
+            </ControlTemplate>
+
+            <Style
+                x:Key="RadioButtonStyle"
+                TargetType="RadioButton">
+                <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonControlTemplate}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
